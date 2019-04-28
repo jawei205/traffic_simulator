@@ -16,7 +16,6 @@ String mode = "green";
 
 void setup() {
   size(600, 400);
-
   //Initialize the objects
   car = new car();
   light = new traffic_light();
@@ -25,8 +24,9 @@ void setup() {
   //initialize the timer
   timer.reset();
 
-  //initialize the img
+  //initialize the images
   street = loadImage("street.jpg");
+  carImg = loadImage("car.png");
 }
 
 void draw() {
@@ -36,15 +36,15 @@ void draw() {
   image(street, 0, 0);
 
   //set the car back to the other side
-  if (x < 0) {
+  if (x < -220) {
     x = 630;
     mode = "green";
     timer.reset();
   }
 
   //draw the "normal" objects
-  car.drawing();
   light.show();
+  car.drawing();
   light.checkColor();
 
   //check if 1st the timer gets below 0
